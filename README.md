@@ -1,2 +1,2 @@
-Ägare: Michael Fors
-Kodgranskare: Hannibal Ftaw
+Owner of this project: Michael Fors,
+Code reviewer: Hannibal Ftaw
