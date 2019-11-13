@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ALM_Uppg_01.Models.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -59,6 +60,34 @@ namespace ALM_Uppg_01
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            BankRepository.AddCustomers(CreateCustomers());
+        }
+
+        private List<Customer> CreateCustomers()
+        {
+            return new List<Customer>()
+            {
+                CreateCustomer(1, "Albin",   new decimal[] {50000M, 20000M}, new int[] {  1,  2}),
+                CreateCustomer(2, "Bert",    new decimal[] {60000M, 10000M}, new int[] {  3,  4}),
+                CreateCustomer(3, "Charlie", new decimal[] {70000M, 30000M}, new int[] {  5,  6}),
+                CreateCustomer(4, "David",   new decimal[] {80000M, 40000M}, new int[] {  7,  8}),
+                CreateCustomer(5, "Erik",    new decimal[] {90000M, 50000M}, new int[] {  9, 10}),
+                CreateCustomer(6, "Fredrik", new decimal[] {40000M, 60000M}, new int[] { 11, 12}),
+            };
+        }
+
+        private Customer CreateCustomer(int id, string name, decimal[] balances, int[] accountIds)
+        {
+            var accounts = new List<Account>();
+            for (int k=0; k<balances.Count(); k++)
+            {
+                accounts.Add(new Account() { AccountId = accountIds[k], Balance = balances[k] });
+            }
+            return new Customer() {
+                Id = id,
+                Name = name,
+                Accounts = accounts
+            };
         }
     }
 }
