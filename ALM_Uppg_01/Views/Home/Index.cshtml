@@ -9,15 +9,15 @@
 <div class="text-center">
     <h1 class="display-4">Michael's Bank</h1>
     <div>
-            @foreach (var customer in Model.Customers)
-            {
+        @foreach (var customer in Model.Customers)
+        {
             <h2>Customer #@customer.Id, Namn @customer.Name</h2>
 
-                    @foreach (var account in customer.Accounts)
-                    {
-                        <p>Account: #@account.AccountId, Balance: #@account.Balance</p>
-                    }
-                
+            @foreach (var account in customer.Accounts)
+            {
+                <p>Account: #@account.AccountId, Balance: @account.Balance SEK</p>
             }
+                
+        }
     </div>
 </div>

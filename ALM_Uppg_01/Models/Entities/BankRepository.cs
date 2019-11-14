@@ -7,7 +7,7 @@ namespace ALM_Uppg_01.Models.Entities
 {
     public static class BankRepository
     {
-        private static List<Customer> Customers { get; set; }
+        private static List<Customer> Customers { get; set;}
         public static List<Customer> GetCustomers()
         {
             return Customers;

@@ -72,7 +72,7 @@ namespace ALM_Uppg_01
                 CreateCustomer(3, "Charlie", new decimal[] {70000M, 30000M}, new int[] {  5,  6}),
                 CreateCustomer(4, "David",   new decimal[] {80000M, 40000M}, new int[] {  7,  8}),
                 CreateCustomer(5, "Erik",    new decimal[] {90000M, 50000M}, new int[] {  9, 10}),
-                CreateCustomer(6, "Fredrik", new decimal[] {40000M, 60000M}, new int[] { 11, 12}),
+                CreateCustomer(6, "Fredrik", new decimal[] {40000M, 60000M}, new int[] { 11, 12})
             };
         }
 
