@@ -226,5 +226,101 @@ namespace Tests
             // Assert
             Assert.Equal(expected, BankRepository.ErrorMessage);
         }
+
+        [Fact]
+        public void Transfer()
+        {
+            // Arrange
+            var customers = new List<Customer>()
+            {
+                new Customer()
+                {
+                    Name = "Hannibal",
+                    Id = 5,
+                    Accounts = new List<Account>()
+                    {
+                        new Account()
+                        {
+                            AccountId = 5,
+                            Balance = 600M
+                        }
+                    }
+                },
+                new Customer()
+                {
+                Name = "Michael",
+                Id = 6,
+                Accounts = new List<Account>()
+                {
+                    new Account()
+                    {
+                        AccountId = 6,
+                        Balance = 700M
+                    }
+                }
+            }
+            };
+            BankRepository.AddCustomers(customers);
+            decimal amount = 200M;
+
+            decimal expected = 900M;
+
+            // Act
+            var account = BankRepository.Transfer(amount, 5, 6);
+            var accountB = BankRepository.GetAccounts().Find(x => x.AccountId == 6);
+
+
+            // Assert
+            Assert.Equal(expected, accountB.Balance);
+        }
+
+        [Fact]
+        public void TransferMoreThanAvalible()
+        {
+            // Arrange
+            var customers = new List<Customer>()
+            {
+                new Customer()
+                {
+                    Name = "Hannibal",
+                    Id = 5,
+                    Accounts = new List<Account>()
+                    {
+                        new Account()
+                        {
+                            AccountId = 5,
+                            Balance = 600M
+                        }
+                    }
+                },
+                new Customer()
+                {
+                    Name = "Michael",
+                    Id = 6,
+                    Accounts = new List<Account>()
+                    {
+                        new Account()
+                        {
+                            AccountId = 6,
+                            Balance = 700M
+                        }
+                    }
+                }
+            };
+            BankRepository.AddCustomers(customers);
+            decimal amount = 650M;
+
+            decimal expected = 600M;
+
+            // Act
+            var account = BankRepository.Transfer(amount, 5, 6);
+            var accountB = BankRepository.GetAccounts().Find(x => x.AccountId == 5);
+
+
+            // Assert
+            Assert.Equal(expected, accountB.Balance);
+        }
     }
+
+
 }

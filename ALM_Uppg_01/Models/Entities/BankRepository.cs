@@ -98,5 +98,26 @@ namespace ALM_Uppg_01.Models.Entities
             var account = GetAccounts().Find(a => a.AccountId == accountId);
             return account;
         }
+
+        public static bool Transfer(decimal amount, int fromAccountId, int toAccountId)
+        {
+
+            var accountTo = GetAccount(toAccountId);
+            var accountFrom = GetAccount(fromAccountId);
+            if (accountFrom == null || accountFrom.Balance - amount < 0 || accountTo == null || accountFrom.AccountId == accountTo.AccountId)
+            {
+                ErrorMessage = "Something went wrong. Make sure that you've entered the correct information.";
+                SuccessMessage = "";
+            }
+            else
+            {
+                accountFrom.Balance -= amount;
+                accountTo.Balance += amount;
+                ErrorMessage = "";
+                SuccessMessage = $"Congratulations you've transferred {amount} to account # {accountTo.AccountId} and the new balance is {accountTo.Balance}";
+            }
+
+            return true;
+        }
     }
 }
