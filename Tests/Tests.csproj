@@ -13,4 +13,8 @@
     <PackageReference Include="coverlet.collector" Version="1.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ALM_Uppg_01\ALM_Uppg_01.csproj" />
+  </ItemGroup>
+
 </Project>
