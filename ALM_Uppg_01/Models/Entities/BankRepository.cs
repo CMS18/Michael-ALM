@@ -52,14 +52,14 @@ namespace ALM_Uppg_01.Models.Entities
                     }
                     else
                     {
-                        ErrorMessage = "You can't widthdraw more than the balance of the account.";
                         SuccessMessage = "";
+                        ErrorMessage = "You can't widthdraw more than the balance of the account.";
                     }
                 }
                 else
                 {
-                    ErrorMessage = CantAccessNonExistingAccount;
                     SuccessMessage = "";
+                    ErrorMessage = CantAccessNonExistingAccount;
                 }
             }
 
@@ -74,8 +74,8 @@ namespace ALM_Uppg_01.Models.Entities
             {
                 if (amount < 0)
                 {
-                    ErrorMessage = "You can't deposit negative amounts.";
                     SuccessMessage = "";
+                    ErrorMessage = "You can't deposit negative amounts.";
                 }
                 else
                 {
@@ -86,8 +86,8 @@ namespace ALM_Uppg_01.Models.Entities
             }
             else
             {
-                ErrorMessage = CantAccessNonExistingAccount;
                 SuccessMessage = "";
+                ErrorMessage = CantAccessNonExistingAccount;
             }
 
             return account;

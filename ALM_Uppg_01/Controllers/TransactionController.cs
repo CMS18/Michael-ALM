@@ -29,10 +29,11 @@ namespace ALM_Uppg_01.Controllers
             {
                 BankRepository.Deposit(model.DepositAccountId, model.DepositAmount);
             }
-            var newModel = new TransactionViewModel();
-            newModel.DepositErrorMessage = BankRepository.ErrorMessage;
-            newModel.DepositSuccessMessage = BankRepository.SuccessMessage;
-            return View("Index", newModel);
+            model.DepositErrorMessage = BankRepository.ErrorMessage;
+            model.DepositSuccessMessage = BankRepository.SuccessMessage;
+            BankRepository.ErrorMessage = "";
+            BankRepository.SuccessMessage = "";
+            return View("Index", model);
         }
 
         [HttpPost]
@@ -42,10 +43,11 @@ namespace ALM_Uppg_01.Controllers
             {
                 BankRepository.Withdrawal(model.WithdrawalAccountId, model.WithdrawalAmount);
             }
-            var newModel = new TransactionViewModel();
-            newModel.WithdrawalErrorMessage = BankRepository.ErrorMessage;
-            newModel.WithdrawalSuccessMessage = BankRepository.SuccessMessage;
-            return View("Index", newModel);
+            model.WithdrawalErrorMessage = BankRepository.ErrorMessage;
+            model.WithdrawalSuccessMessage = BankRepository.SuccessMessage;
+            BankRepository.ErrorMessage = "";
+            BankRepository.SuccessMessage = "";
+            return View("Index", model);
         }
     }
 }

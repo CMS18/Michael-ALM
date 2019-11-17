@@ -8,9 +8,6 @@ namespace ALM_Uppg_01.Models.ViewModels
 {
     public class TransactionViewModel
     {
-        public DepositViewModel DepositVM { get; set; }
-        public WithdrawalViewModel WithdrawalVM { get; set; }
-
         [Required]
         [Display(Name = "Account number")]
         public int WithdrawalAccountId { get; set; }
@@ -38,12 +35,5 @@ namespace ALM_Uppg_01.Models.ViewModels
         public string DepositErrorMessage { get; set; }
 
         public string DepositSuccessMessage { get; set; }
-
-
-        public TransactionViewModel()
-        {
-            DepositVM = new DepositViewModel();
-            WithdrawalVM = new WithdrawalViewModel();
-        }
     }
 }
