@@ -72,7 +72,7 @@ namespace Tests
         }
         
         [Fact]
-        public void Withdrawal_CantMakeBasicWidthdrawal()
+        public void Withdrawal_CanMakeBasicWidthdrawal()
         {
             // Arrange
             var customers = new List<Customer>()
@@ -135,7 +135,7 @@ namespace Tests
 
 
         [Fact]
-        public void Deposit_CantMakeBasicDeposit()
+        public void Deposit_CanMakeBasicDeposit()
         {
             // Arrange
             var customers = new List<Customer>()
