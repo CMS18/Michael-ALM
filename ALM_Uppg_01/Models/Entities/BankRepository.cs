@@ -104,20 +104,60 @@ namespace ALM_Uppg_01.Models.Entities
 
             var accountTo = GetAccount(toAccountId);
             var accountFrom = GetAccount(fromAccountId);
-            if (accountFrom == null || accountFrom.Balance - amount < 0 || accountTo == null || accountFrom.AccountId == accountTo.AccountId)
+            if (accountFrom == null || accountTo == null)
             {
-                ErrorMessage = "Something went wrong. Make sure that you've entered the correct information.";
+                ErrorMessage = "The account could not be found. Make sure both account numbers are correct.";
                 SuccessMessage = "";
             }
             else
             {
-                accountFrom.Balance -= amount;
-                accountTo.Balance += amount;
-                ErrorMessage = "";
-                SuccessMessage = $"Congratulations you've transferred {amount} to account # {accountTo.AccountId} and the new balance is {accountTo.Balance}";
+                if (accountFrom.Balance - amount < 0)
+                {
+                    ErrorMessage =
+                        $"The amount you're transferring can't be higher than your balance. Your current balance is {accountFrom.Balance}";
+                    SuccessMessage = "";
+                }
+                else
+                {
+                    if (accountFrom.AccountId == accountTo.AccountId)
+                    {
+                        ErrorMessage =
+                            "The account you're sending money to can't be the same account you're deducting money from.";
+                        SuccessMessage = "";
+                    }
+                    else
+                    {
+                        if (amount < 0)
+                        {
+                            ErrorMessage = $"You can't transfer negative amount of {amount} from {accountFrom.AccountId} to {accountTo.AccountId}";
+                            SuccessMessage = "";
+                        }
+                        else
+                        {
+                            accountFrom.Balance -= amount;
+                            accountTo.Balance += amount;
+                            ErrorMessage = "";
+                            SuccessMessage =
+                                $"Congratulations you've transferred {amount} to account # {accountTo.AccountId} and the new balance is {accountTo.Balance}";
+                        }
+                    }
+                }
             }
 
             return true;
         }
     }
 }
+
+//if (accountFrom == null || accountFrom.Balance - amount< 0 || accountTo == null || accountFrom.AccountId == accountTo.AccountId)
+//{
+//ErrorMessage = "Something went wrong. Make sure that you've entered the correct information.";
+//SuccessMessage = "";
+//}
+//else
+//{
+//accountFrom.Balance -= amount;
+//accountTo.Balance += amount;
+//ErrorMessage = "";
+//SuccessMessage = $"Congratulations you've transferred {amount} to account # {accountTo.AccountId} and the new balance is {accountTo.Balance}";
+//}
