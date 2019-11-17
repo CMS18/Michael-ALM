@@ -12,9 +12,12 @@ namespace ALM_Uppg_01.Models.ViewModels
         public WithdrawalViewModel WithdrawalVM { get; set; }
 
         [Required]
+        [Display(Name = "Account number")]
         public int WithdrawalAccountId { get; set; }
 
         [Required]
+        [Display(Name = "Amount")]
+
         public decimal WithdrawalAmount { get; set; }
 
         public string WithdrawalErrorMessage { get; set; }
@@ -23,9 +26,13 @@ namespace ALM_Uppg_01.Models.ViewModels
 
 
         [Required]
+        [Display(Name = "Account number")]
+
         public int DepositAccountId { get; set; }
 
         [Required]
+        [Display(Name = "Amount")]
+
         public decimal DepositAmount { get; set; }
 
         public string DepositErrorMessage { get; set; }
